@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-#    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,10 +72,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'map_project.wsgi.application'
-
-# CRONJOBS = [    #Runs scrape.py after every 5th minute
-#     ('*/1 * * * *', 'map_project.scrape.my_cron_job')
-# ]
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
