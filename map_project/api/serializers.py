@@ -6,3 +6,8 @@ class MainSerializer(serializers.ModelSerializer):
     class Meta:
         model = Main
         fields = ('id', 'search', 'date', 'code')
+
+class AddFavouritesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Main
+        fields = ()
