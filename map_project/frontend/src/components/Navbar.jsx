@@ -18,7 +18,7 @@ const NavbarComponent = styled.span`
   position: fixed;
   top: 0;
   right: 0;
-  margin-right: 5vw;
+  margin-right: 7vw;
   display: flex;
   gap: 5vw;
   @media (max-width: 750px) {

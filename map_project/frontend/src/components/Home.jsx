@@ -13,7 +13,7 @@ const HomeWrapper = styled.div`
 //   color: #8B0000;
 // `;
 
-const whiteText = styled.span`
+const WhiteText = styled.span`
   color: #eff8ef;
 `;
 
@@ -22,7 +22,6 @@ const GoldText = styled.span`
 `;
 
 const TitleLine1 = styled.span`
-
   text-decoration: solid;
   text-align: center;
   font-size: large;
@@ -34,8 +33,8 @@ const TitleLine1 = styled.span`
 const Home = () => {
   return (
     <HomeWrapper>
-      <Title><GoldText>Alert yourself on potential <whiteText>TTC</whiteText> Bus accidents.</GoldText></Title>
-      <Subtitle>TrackTC will take care of all accidents in Downtown Toronto along your commute, using reliable database system.</Subtitle>
+      <Title><GoldText>Notify yourself on potential <WhiteText>TTC</WhiteText>/Bus alerts.</GoldText></Title>
+      <Subtitle>TrackTC will take care of all TTC alerts in Downtown Toronto along your commute, using reliable database system.</Subtitle>
       <Table/>
     </HomeWrapper>
   );
