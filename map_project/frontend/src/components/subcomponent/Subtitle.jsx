@@ -5,6 +5,7 @@ const SubtitleWrapper = styled.h2`
   line-height: 34px;
 
   text-align: center;
+  margin: 0 5vw;
   color: rgba(0, 0, 0, 0.8);
 `;
 
