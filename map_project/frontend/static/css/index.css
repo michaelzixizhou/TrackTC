@@ -1,3 +1,8 @@
-html {
-    background-color: green;
+html, body {
+  min-height: 150vh;
+  background-image: linear-gradient(to bottom, rgb(125, 141, 197), rgb(171, 130, 173));
+}
+
+* {
+  font-family: "DM Sans";
 }

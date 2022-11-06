@@ -1,13 +1,23 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework import generics
-from .serializers import MainSerializer
-from .models import Main
+from rest_framework import generics, status
+from .models import BusAlert, SignUp
+from .serializers import BusAlertSerializer, SignUpCreateSerializer
+from rest_framework.response import Response
 
-# Create your views here.
-def home(request):
-    return HttpResponse("map app")
 
-class MainView(generics.CreateAPIView):
-    queryset = Main.objects.all()
-    serializer_class = MainSerializer
+class BusAlertAPIView(generics.CreateAPIView):
+    serializer_class = BusAlertSerializer
+    
+    def get_queryset(self):
+        busalerts = BusAlert.objects.all()
+        return busalerts
+    
+    def get(self, request, *args, **kwargs):
+        busalerts = self.get_queryset()
+        serializer = BusAlertSerializer(busalerts, many=True)
+
+        return Response(serializer.data)
+
+
+class SignUpAPIView(generics.CreateAPIView):
+    queryset = SignUpCreateSerializer
+    serializer_class = SignUpCreateSerializer

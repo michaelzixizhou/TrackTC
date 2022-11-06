@@ -1,8 +1,26 @@
 from rest_framework import serializers
-from .models import Main
+from .models import BusAlert, SignUp
 
 # returns models as a json string
-class MainSerializer(serializers.ModelSerializer):
+
+class BusAlertSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Main
-        fields = ('id', 'search', 'date', 'code')
+        model = BusAlert
+        fields = [
+            'busnumber',
+            'busname',
+            'delaymessage',
+        ]
+
+
+class SignUpCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SignUp
+        fields = [
+            'email',
+            'favourites',
+            'time',
+        ]
+
+    def create(self, validated_data):
+        return SignUp.objects.create(**validated_data)

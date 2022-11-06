@@ -1,6 +1,7 @@
-from .views import home, MainView
+from .views import BusAlertAPIView, SignUpAPIView
 from django.urls import path
 
 urlpatterns = [
-    path('', MainView.as_view())
+    path('BusAlert', BusAlertAPIView.as_view()),
+    path('SignUp', SignUpAPIView.as_view()),
 ]
