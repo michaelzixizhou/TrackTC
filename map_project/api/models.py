@@ -97,8 +97,9 @@ def emailALL():
         #display info
 
 class BusAlert(models.Model):
-    busnumber = models.CharField(max_length=3, default='')
-    busname = models.CharField(max_length=50, default='')
+    isbus = models.BooleanField(default=True)
+    vehiclenumber = models.CharField(max_length=4, default='')
+    vehiclename = models.CharField(max_length=50, default='')
     delaymessage = models.CharField(max_length=100, default='')
     
 
@@ -135,8 +136,3 @@ class AlertInfo:
         else:
             message = ''
         return message
-
-    
-
-# class Users:
-#     def __init__
