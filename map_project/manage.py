@@ -32,7 +32,7 @@ def startScraping():
 
 if __name__ == '__main__':
     t1 = Thread(target=startScraping)
-    # t1.setDaemon(True)
+    t1.daemon = True
     t1.start()
-    startScraping()
+    #startScraping()
     main()
