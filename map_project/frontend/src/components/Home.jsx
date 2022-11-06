@@ -11,7 +11,7 @@ const HomeWrapper = styled.div`
 const Home = () => {
   return (
     <HomeWrapper>
-      <Title>Alert yourself on potential TTC/Bus accidents</Title>
+      <Title>Alert yourself on potential TTC/Bus accidents.</Title>
       <Subtitle>TrackTC will take care of all accidents in Downtown Toronto along your commute, using reliable database system.</Subtitle>
       <Input>Enter your email address</Input>
       <Table/>
