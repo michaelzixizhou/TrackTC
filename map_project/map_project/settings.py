@@ -106,8 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587' #Your server port
-EMAIL_HOST_USER = 'tracktcnews@gmail.com'
-EMAIL_HOST_PASSWORD = 'nvhebpacznugivft'
+EMAIL_HOST_USER = 'ttcdataalert@gmail.com'
+EMAIL_HOST_PASSWORD = 'lsmaqqhyjhjabkoo'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 

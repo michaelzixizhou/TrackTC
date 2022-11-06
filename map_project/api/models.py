@@ -61,7 +61,7 @@ def jsonReadPreferences(preferences):
     return PopulatedDict
 
 def emailPerson(subject,message,otherEmail):
-    send_mail(subject,message,"tracktcnews@gmail.com",[str(otherEmail)],fail_silently=False)
+    send_mail(subject,message,"ttcdataalert@gmail.com",[str(otherEmail)],fail_silently=False)
     print("Email Delivered")
 
 def EmailTimer():
@@ -104,7 +104,7 @@ class BusAlert(models.Model):
 
 class SignUp(models.Model):
     email = models.EmailField()
-    favourites = models.CharField(max_length=8, null=True, blank=True)
+    favourites = models.CharField(max_length=500, default = "")
     time = models.TimeField(auto_now=True, auto_now_add=False)
 
 
