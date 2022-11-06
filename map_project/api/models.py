@@ -32,7 +32,6 @@ def jsonReader():
                             PopulatedDict[i] = [str(y)]
                         else:
                             PopulatedDict[i].append(str(y))
-    print(PopulatedDict)
     return PopulatedDict
 
 def jsonReadPreferences(preferences):
@@ -59,7 +58,6 @@ def jsonReadPreferences(preferences):
                             PopulatedDict[i] = [str(y)]
                         else:
                             PopulatedDict[i].append(str(y))
-    print(PopulatedDict)
     return PopulatedDict
 
 def emailPerson(subject,message,otherEmail):
@@ -90,10 +88,8 @@ def emailALL():
         string = f''
         for b in favoriteList:
             c = b.lstrip()
-            print(c)
             string += "\n" + alertinfo.getmessage(c)
-        print(string)
-        
+            
         if not string:
             emailPerson("STATUS UPDATE", "No Alert Messages!",getattr(SignUp.objects.all()[i],"email"))
         else:
