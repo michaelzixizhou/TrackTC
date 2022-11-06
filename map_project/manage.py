@@ -5,6 +5,7 @@ import sys
 from scrape import runScrape
 from subprocess import call
 from threading import Thread
+#from api.models import emailALL,EmailTimers
 import requests
 import time
 
@@ -34,5 +35,8 @@ if __name__ == '__main__':
     t1 = Thread(target=startScraping)
     t1.daemon = True
     t1.start()
+    # t2 = Thread(target = emailALL)
+    # t2.daemon = True
+    # t2.start()
     #startScraping()
     main()
