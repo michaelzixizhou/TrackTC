@@ -3,21 +3,22 @@ import styled from 'styled-components';
 
 const TableWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  gap: 4vw;
-  margin: 20vh 10vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+  margin: 20vh 0;
+  align-
 `;
 
-const TitleLine1 = styled.span`
+const TitleLine1 = styled.div`
   text-decoration: solid;
   text-align: center;
-  font-size: large;
-  border-radius: 50px;
-  padding: 1vw;
-  margin-right: 0.5vw;
-  margin-bottom: 1vh;
+  vertical-align: middle;
+  font-size: min(3vw, 1rem);
+  padding: min(1.5vw, 0.5rem);
   color: #fff;
+  width: 2rem;
+  height: 2rem;
   border-color: #fff;
   border-style: solid;
   background-color: #E64A19;
@@ -25,6 +26,9 @@ const TitleLine1 = styled.span`
 
 const CustomTable = styled.table`
   display: flex;
+  background: white;
+  width: min(80vw, 30rem);
+  overflow-wrap: anywhere;
 `;
 
 const Table = () => {
@@ -48,7 +52,7 @@ const Table = () => {
           <CustomTable>
               <thead>
                   <tr>
-                      <td><TitleLine1>Bus{post.busnumber}</TitleLine1></td>
+                      <td><TitleLine1>{post.busnumber}</TitleLine1></td>
                   </tr>
               </thead>
               <tfoot>
