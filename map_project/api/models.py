@@ -4,6 +4,7 @@ import json
 from django.core.mail import send_mail
 from threading import Thread
 import time
+import string
 
 
 # Create your models here.
@@ -13,6 +14,7 @@ def jsonReader():
     with open("./Alerts.json") as rawOpen:
         Data = json.load(rawOpen)
         for i in Data:
+            #print(i)
             if Data[i] != []:
                 for y in Data[i]:
                     #print(y)
@@ -87,7 +89,9 @@ def emailALL():
         alertinfo = AlertInfo()
         string = f''
         for b in favoriteList:
-            string += "\n" + alertinfo.getmessage(b)
+            c = b.lstrip()
+            print(c)
+            string += "\n" + alertinfo.getmessage(c)
         print(string)
         
         if not string:
@@ -124,6 +128,8 @@ class AlertInfo:
             return bus[4:]
 
     def getmessage(self, bus: str):
+        #print("Bus in dict: " + bus in self.alertdict)
+        #print(self.alertdict)
         if bus in self.alertdict:
             print(self.alertdict)
             message = self.alertdict[bus]
