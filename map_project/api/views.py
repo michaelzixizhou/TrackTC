@@ -19,5 +19,19 @@ class BusAlertAPIView(generics.CreateAPIView):
 
 
 class SignUpAPIView(generics.CreateAPIView):
-    queryset = SignUpCreateSerializer
     serializer_class = SignUpCreateSerializer
+    
+    def get_queryset(self):
+        signups = SignUp.objects.all()
+        return signups
+
+    def post(self, request, *args, **kwargs):
+        signups_data = request.data 
+        
+        new_signup = SignUp.objects.create(email=signups_data["email"], favourites=signups_data["favourites"], time=signups_data["time"])
+
+        new_signup.save()
+
+        serializer = SignUpCreateSerializer(new_signup)
+
+        return Response(serializer.data)

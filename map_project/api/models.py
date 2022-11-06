@@ -1,6 +1,7 @@
 from django.db import models
 import string, random
 import json
+from django.core.mail import send_mail
 
 # Create your models here.
 def jsonReader():
@@ -29,14 +30,18 @@ def jsonReader():
     print(PopulatedDict)
     return PopulatedDict
 
+def emailPerson(subject,message,otherEmail):
+    send_mail(subject,message,"tracktcnews@gmail.com",[str(otherEmail)],fail_silently=False)
+    print("Email Delivered")
+
 class BusAlert(models.Model):
-    busnumber = models.CharField(max_length=3, default='')
-    busname = models.CharField(max_length=50, default='')
+    busnumber = models.CharField(max_length=3, default='', unique=True)
+    busname = models.CharField(max_length=50, default='', unique=True)
     delaymessage = models.CharField(max_length=100, default='')
     
 
 class SignUp(models.Model):
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     favourites = models.CharField(max_length=8, null=True, blank=True)
     time = models.TimeField(auto_now=False, auto_now_add=False)
 
