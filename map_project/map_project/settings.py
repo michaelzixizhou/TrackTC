@@ -127,4 +127,3 @@ STATIC_URL = 'frontend/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
-

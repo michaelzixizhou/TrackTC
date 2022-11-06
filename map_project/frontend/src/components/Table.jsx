@@ -1,3 +1,28 @@
+import { useState } from "react";
+import styled from 'styled-components';
+
+const BusList = styled.span`
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.1s ease-out;
+  margin-right: 25vw;
+  margin-top: 1.5rem;
+  text-align: center;
+  background-color: red;
+`;
+
+const TitleLine1 = styled.h2`
+
+  text-decoration: solid;
+  text-align: center;
+  font-size: large;
+  border-radius: 50px;
+  color: #000000;
+  background-color: #bdcf22;
+`;
+
+
+
 const Table = () => {
     const Info = {
       "Line 1": [
@@ -31,26 +56,22 @@ const Table = () => {
   }
 
   return (
-      <details>
-          <summary>Accidents</summary>
-          <span>
               <span>
                 {keys.map((key) => {
                     return (
                     <table>
                         <thead>
                             <tr>
-                                <th>{key}</th>
+                                <TitleLine1>{key}</TitleLine1>
                             </tr>
                         </thead>
-                        <tbody>
-                            {getAccidents(Info[key])}
-                        </tbody>
+                        
+                           <BusList> {getAccidents(Info[key])} </BusList>
+                        
                     </table>);
                 })}
-              </span>
-          </span>
-      </details>
+            </span>
+
   );
 }
 
