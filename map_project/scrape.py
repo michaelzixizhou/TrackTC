@@ -28,7 +28,10 @@ def runScrape():
     for i in routeInfo:
         if i["route"] != '9999' or i["routeType"] != "Subway": #when route number = 9999 --> alert is formatted differently (non line specific afgit ters)
             #print("Routes Involved: "+ i["route"] + "   Alert Title: " + i["title"])
-            infoByRouteNumber["Bus " + i["route"]].append(i["title"])
+            if (("Bus " + i["route"]) in infoByRouteNumber.keys() == True):
+                infoByRouteNumber["Bus " + i["route"]].append(i["headerText"])
+            else:
+                infoByRouteNumber["Bus " + i["route"]] = [(i["headerText"])]
         else:
             #serach for substring - line number:
             lineTextIndex = i["description"].find("Line ")
@@ -40,7 +43,7 @@ def runScrape():
 
 
     print(infoByRouteNumber)
-    infoStr = json.dumps(infoByRouteNumber)
-    
+
     with open("./map_project/Alerts.json", "w") as outfile:
-        outfile.write(str(infoStr))
+        outfile.write(str(json.dumps(infoByRouteNumber)))
+    return str(infoByRouteNumber)

@@ -1,39 +1,23 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework import generics
-from .serializers import MainSerializer, AddFavouritesSerializer
-from .models import Main
-from rest_framework.views import APIView
+from rest_framework import generics, status
+from .models import BusAlert, SignUp
+from .serializers import BusAlertSerializer, SignUpCreateSerializer
 from rest_framework.response import Response
 
-# Create your views here.
-# User view
-# Searcher View
-# TTC Data View
 
-class UserView():
-    pass
+class BusAlertAPIView(generics.CreateAPIView):
+    serializer_class = BusAlertSerializer
+    
+    def get_queryset(self):
+        busalerts = BusAlert.objects.all()
+        return busalerts
+    
+    def get(self, request, *args, **kwargs):
+        busalerts = self.get_queryset()
+        serializer = BusAlertSerializer(busalerts, many=True)
 
-class MainView(generics.CreateAPIView):
-    queryset = Main.objects.all()
-    serializer_class = MainSerializer
+        return Response(serializer.data)
 
 
-# class FavouritesView(APIView):
-#     serializer_class = AddFavouritesSerializer
-
-#     def post(self, request, format=None):
-#         if not self.request.session.exists(self.request.session.session_key):
-#             self.request.session.create()
-
-#         serializer = self.serializer_class(data=request.data)
-#         if serializer.is_valid():
-#             # initialize variables
-#             queryset = Main.objects.filer()
-#             pass
-#             if queryset.exists():
-#                 main = queryset[0]
-#             else:
-#                 main.save()
-            
-#             return Response(MainSerializer(main).data, status=status)
+class SignUpAPIView(generics.CreateAPIView):
+    queryset = SignUpCreateSerializer
+    serializer_class = SignUpCreateSerializer
