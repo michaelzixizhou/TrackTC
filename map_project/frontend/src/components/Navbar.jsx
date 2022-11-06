@@ -126,8 +126,7 @@ const Navbar = () => {
           <NavTitle>TrackTC</NavTitle>
           <NavbarComponent>
             <NavLink title="home" to="/" style={{textDecoration: 'none'}}><NavFont>Home</NavFont></NavLink>
-            <NavLink title="login" to="/accounts/login/" style={{textDecoration: 'none'}}><NavFont>Log In</NavFont></NavLink>
-            <NavLink title="sign up" to="/accounts/signup/" style={{textDecoration: 'none'}}><NavFont>Sign Up</NavFont></NavLink>
+            <NavLink title="signup" to="/signup" style={{textDecoration: 'none'}}><NavFont>Sign Up</NavFont></NavLink>
           </NavbarComponent>
           <BurgerbarWrapper onClick={() => updateSideBarOn(true)}>
             <WhiteLine/>
@@ -139,8 +138,7 @@ const Navbar = () => {
               <XBarWrapper onClick={() => updateSideBarOn(false)}><XBar>×</XBar></XBarWrapper>
               <br/>
               <NavLink title="home" to="/" style={{textDecoration: 'none'}}><SideFont>Home</SideFont></NavLink>
-              <NavLink title="login" to="/accounts/login/" style={{textDecoration: 'none'}}><SideFont>Log In</SideFont></NavLink>
-              <NavLink title="signup" to="/accounts/signup/" style={{textDecoration: 'none'}}><SideFont>Sign Up</SideFont></NavLink>
+              <NavLink title="signup" to="/signup" style={{textDecoration: 'none'}}><SideFont>Sign Up</SideFont></NavLink>
             </SidebarWrapper> 
           : <></>}
         </NavbarWrapper>
