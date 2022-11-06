@@ -1,77 +1,62 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from 'styled-components';
 
-const BusList = styled.span`
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.1s ease-out;
-  margin-right: 25vw;
-  margin-top: 1.5rem;
+const TableWrapper = styled.div`
   text-align: center;
-  background-color: red;
+  align-items: center;
+  display: flex;
+  gap: 4vw;
+  margin: 20vh 10vw;
 `;
 
-const TitleLine1 = styled.h2`
-
+const TitleLine1 = styled.span`
   text-decoration: solid;
   text-align: center;
   font-size: large;
   border-radius: 50px;
-  color: #000000;
-  background-color: #bdcf22;
+  padding: 10px;
+  margin-bottom: 1vh;
+  color: #fff;
+  border-color: #fff;
+  border-style: solid;
+  background-color: #E64A19;
 `;
 
-
+const CustomTable = styled.table`
+  display: flex;
+`;
 
 const Table = () => {
-    const Info = {
-      "Line 1": [
-          "Queen's Park- Street Car Blocked", 
-          "Road Blocked at St.George", 
-      ],
-      "Bus": [
-          "Bus Line 25 is over", 
-          "Bus Line 19 is over", 
-          "Bus Line qr83q is over", 
-          "Bus Line is over", 
-          "Bus Line is over", 
-          "Bus Line is over"
-      ],
-      "Bus2": [
-          "Bus Line 25 is over", 
-          "Bus Line 19 is over", 
-          "Bus Line qr83q is over", 
-          "Bus Line is over", 
-          "Bus Line is over", 
-          "Bus Line is over"
-      ],
-  };
-
-  const keys = Object.keys(Info);
-
-  const getAccidents = (arr) => {
-    return arr.map((accident) => (
-      <tr><td>{accident}</td></tr>
-    ));
-  }
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/BusAlert')
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setPosts(data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+  }, []);
 
   return (
-              <span>
-                {keys.map((key) => {
-                    return (
-                    <table>
-                        <thead>
-                            <tr>
-                                <TitleLine1>{key}</TitleLine1>
-                            </tr>
-                        </thead>
-                        
-                           <BusList> {getAccidents(Info[key])} </BusList>
-                        
-                    </table>);
-                })}
-            </span>
-
+    <TableWrapper>
+      {posts.map((post) => {
+          return (
+          <CustomTable>
+              <thead>
+                  <tr>
+                      <td><TitleLine1>Bus{post.busnumber}</TitleLine1></td>
+                  </tr>
+              </thead>
+              <tfoot>
+                  <tr><td>{post.busname}</td></tr>
+                  <tr><td>{post.delaymessage}</td></tr>
+              </tfoot>
+          </CustomTable>);
+      })}
+    </TableWrapper>
   );
 }
 
