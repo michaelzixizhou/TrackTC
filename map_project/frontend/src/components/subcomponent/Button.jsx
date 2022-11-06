@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const InputWrapper = styled.input`
-  /* Adapt the colors based on primary prop */
   background: #fff;
   color: #000;
   font-size: 1em;
@@ -15,7 +14,7 @@ const Input = (props) => {
   return (
     <>
       <InputWrapper type="text" placeholder="Your email address"/>
-      <InputWrapper type="submit" placeholder="Receive Alerts"/>
+      <InputWrapper type="submit" value="Submit"/>
     </>
   );
 }

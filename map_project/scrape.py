@@ -40,7 +40,7 @@ def runScrape():
 
 
     print(infoByRouteNumber)
-
+    infoStr = json.dumps(infoByRouteNumber)
+    
     with open("./map_project/Alerts.json", "w") as outfile:
-        outfile.write(str(infoByRouteNumber))
-
+        outfile.write(str(infoStr))
