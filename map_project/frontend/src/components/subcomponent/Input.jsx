@@ -10,7 +10,7 @@ const InputWrapper = styled.input`
   border-radius: 4px;
 `;
 
-const Input = (props) => {
+const Input = () => {
   return (
     <>
       <InputWrapper type="text" placeholder="Your email address"/>
