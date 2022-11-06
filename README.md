@@ -43,4 +43,6 @@ npm install @material-ui/core
 npm install @babel/plugin-proposal-class-properties
 npm install react-router-dom
 npm install @material-ui/icons
+
+pip install requests
 ```
