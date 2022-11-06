@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'api.TTCUser'
 # Application definition
 
 INSTALLED_APPS = [
