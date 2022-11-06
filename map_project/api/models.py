@@ -1,6 +1,8 @@
 from django.db import models
 import string, random
 import json
+from django.core.mail import send_mail
+
 
 # Create your models here.
 def jsonReader():
@@ -27,7 +29,42 @@ def jsonReader():
                         else:
                             PopulatedDict[i].append(str(y))
     print(PopulatedDict)
+
+def jsonReadPreferences(preferences):
+    preferenceList = preferences.split(",")
+    PopulatedDict = {}
+    with open("./Alerts.json") as rawOpen:
+        Data = json.load(rawOpen)
+        for i in Data:
+            if Data[i] in preferenceList:
+                # print(preferences)
+                for y in Data[i]:
+                    #print(y)
+                    linkIndex = (y).find("<")
+                    #print(linkIndex)
+                    if linkIndex != -1:
+                        #print(i in PopulatedDict.keys())
+                        if ((i in PopulatedDict.keys()) == False):
+                            PopulatedDict[i] = [(str(y))[0:linkIndex]]
+                            #print("THIS RAN")
+                        else:
+                            PopulatedDict[i].append((str(y))[0:linkIndex])
+                    else:
+                        if ((i in PopulatedDict.keys()) == False):
+                            PopulatedDict[i] = [str(y)]
+                        else:
+                            PopulatedDict[i].append(str(y))
+    print(PopulatedDict)
+
+    
     return PopulatedDict
+
+def emailPerson(subject,message,otherEmail):
+    send_mail(subject,message,"tracktcnews@gmail.com",[str(otherEmail)],fail_silently=False)
+    print("Email Delivered")
+
+
+
 
 class BusAlert(models.Model):
     busnumber = models.CharField(max_length=3, default='')
@@ -38,7 +75,8 @@ class BusAlert(models.Model):
 class SignUp(models.Model):
     email = models.EmailField()
     favourites = models.CharField(max_length=8, null=True, blank=True)
-    time = models.TimeField(auto_now=False, auto_now_add=False)
+    time = models.TimeField(auto_now=True, auto_now_add=False)
+
 
 
 class AlertInfo:
@@ -60,3 +98,6 @@ class AlertInfo:
         index = message.find(':')
 
         return message[:index]
+
+# class Users:
+#     def __init__
