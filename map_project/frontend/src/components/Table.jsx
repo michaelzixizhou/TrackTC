@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import styled from 'styled-components';
 
 const TableWrapper = styled.div`
-  text-align: center;
-  align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  margin: auto;
   gap: 4vw;
   margin: 20vh 10vw;
 `;
@@ -14,7 +14,8 @@ const TitleLine1 = styled.span`
   text-align: center;
   font-size: large;
   border-radius: 50px;
-  padding: 10px;
+  padding: 1vw;
+  margin-right: 0.5vw;
   margin-bottom: 1vh;
   color: #fff;
   border-color: #fff;
