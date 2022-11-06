@@ -29,13 +29,15 @@ const Signup = () => {
   for (let i = 1; i <= 999; i++){
     options.push({value: 'line' + i, label: 'Bus ' + i});
   }
-
+ 
   return (
     <SignUpWrapper> 
-      <legend>Choose TTC and Bus lines you would like to receive emails:</legend>
-      <Select options={options} width="2000px" isMulti/>
-      <InputWrapper type="text" placeholder="Your email address"/>
-      <InputWrapper type="submit" value="Submit"/>
+      <form action ='' method="post">
+        <legend>Choose TTC and Bus lines you would like to receive emails:</legend><br/>
+        <Select options={options} width="2000px" isMulti/><br/>
+        <InputWrapper type="text" placeholder="Your email address"/>
+        <input type="submit" value="Submit"/>
+      </form>
     </SignUpWrapper>
   );
 }
