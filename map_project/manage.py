@@ -2,12 +2,11 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from scrape import runScrape
-from subprocess import call
-from threading import Thread
+# from api.models import Scraping
+#from subprocess import call
+#from threading import Thread
 import requests
 import time
-
 
 
 def main():
@@ -23,16 +22,20 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-def startScraping():
-    while (True):
-        #call(["python", "map_project\\scrape.runScrape.py"])
-        runScrape()
-        time.sleep(60)
+# def startScraping():
+#     while (True):
+#         #call(["python", "map_project\\scrape.runScrape.py"])
+#         ScrapedValue = api.scrape.runScrape()
+#         # sendEmail(ScrapedValue)
+#         time.sleep(60)
+
+
         
 
 if __name__ == '__main__':
-    t1 = Thread(target=startScraping)
-    t1.daemon = True
-    t1.start()
+    # Scraper = Scraping()
+    # t1 = Thread(target=Scraper.startScraping)
+    # t1.daemon = True
+    # t1.start()
     #startScraping()
     main()
