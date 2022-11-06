@@ -67,8 +67,9 @@ def emailPerson(subject,message,otherEmail):
 
 
 class BusAlert(models.Model):
-    busnumber = models.CharField(max_length=3, default='')
-    busname = models.CharField(max_length=50, default='')
+    isbus = models.BooleanField(default=True)
+    vehiclenumber = models.CharField(max_length=4, default='')
+    vehiclename = models.CharField(max_length=50, default='')
     delaymessage = models.CharField(max_length=100, default='')
     
 
@@ -98,6 +99,3 @@ class AlertInfo:
         index = message.find(':')
 
         return message[:index]
-
-# class Users:
-#     def __init__

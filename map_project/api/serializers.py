@@ -7,8 +7,9 @@ class BusAlertSerializer(serializers.ModelSerializer):
     class Meta:
         model = BusAlert
         fields = [
-            'busnumber',
-            'busname',
+            'isbus',
+            'vehiclenumber',
+            'vehiclename',
             'delaymessage',
         ]
 
