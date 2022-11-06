@@ -4,6 +4,7 @@ import json
 from django.core.mail import send_mail
 from threading import Thread
 import time
+import string
 
 
 # Create your models here.
@@ -13,6 +14,7 @@ def jsonReader():
     with open("./Alerts.json") as rawOpen:
         Data = json.load(rawOpen)
         for i in Data:
+            #print(i)
             if Data[i] != []:
                 for y in Data[i]:
                     #print(y)
@@ -30,7 +32,6 @@ def jsonReader():
                             PopulatedDict[i] = [str(y)]
                         else:
                             PopulatedDict[i].append(str(y))
-    print(PopulatedDict)
     return PopulatedDict
 
 def jsonReadPreferences(preferences):
@@ -57,11 +58,10 @@ def jsonReadPreferences(preferences):
                             PopulatedDict[i] = [str(y)]
                         else:
                             PopulatedDict[i].append(str(y))
-    print(PopulatedDict)
     return PopulatedDict
 
 def emailPerson(subject,message,otherEmail):
-    send_mail(subject,message,"tracktcnews@gmail.com",[str(otherEmail)],fail_silently=False)
+    send_mail(subject,message,"ttcdataalert@gmail.com",[str(otherEmail)],fail_silently=False)
     print("Email Delivered")
 
 def EmailTimer():
@@ -87,9 +87,9 @@ def emailALL():
         alertinfo = AlertInfo()
         string = f''
         for b in favoriteList:
-            string += "\n" + alertinfo.getmessage(b)
-        print(string)
-        
+            c = b.lstrip()
+            string += "\n" + alertinfo.getmessage(c)
+            
         if not string:
             emailPerson("STATUS UPDATE", "No Alert Messages!",getattr(SignUp.objects.all()[i],"email"))
         else:
@@ -105,7 +105,7 @@ class BusAlert(models.Model):
 
 class SignUp(models.Model):
     email = models.EmailField()
-    favourites = models.CharField(max_length=8, null=True, blank=True)
+    favourites = models.CharField(max_length=500, default = "")
     time = models.TimeField(auto_now=True, auto_now_add=False)
 
 
@@ -125,6 +125,8 @@ class AlertInfo:
             return bus[4:]
 
     def getmessage(self, bus: str):
+        #print("Bus in dict: " + bus in self.alertdict)
+        #print(self.alertdict)
         if bus in self.alertdict:
             print(self.alertdict)
             message = self.alertdict[bus]

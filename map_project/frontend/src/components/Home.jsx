@@ -6,7 +6,6 @@ import styled from 'styled-components';
 const HomeWrapper = styled.div`
   margin: min(20rem, 30vh) 0;
   /* background-image: linear-gradient(to bottom, rgb(96, 114, 179), rgb(145, 95, 149)); */
-
 `;
 
 // const RedText = styled.span`
@@ -14,20 +13,11 @@ const HomeWrapper = styled.div`
 // `;
 
 const WhiteText = styled.span`
-  color: #eff8ef;
+  color: #fff;
 `;
 
 const GoldText = styled.span`
-  color: #f0de18;
-`;
-
-const TitleLine1 = styled.span`
-  text-decoration: solid;
-  text-align: center;
-  font-size: large;
-  border-radius: 50px;
-  color: #000000;
-  background-color: #bdcf22;
+  color: #F5E769;
 `;
 
 const Home = () => {
